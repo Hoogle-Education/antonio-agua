@@ -1,0 +1,78 @@
+// letra a
+// estou com "using namespace std;"
+
+void inverte(stack<char> *p){
+
+  queue<char> f;
+
+  while(not p.empty()){
+    f.push(p.top())
+    p.pop();
+  }
+
+  while(not f.empty()){
+    p.push(f.front());
+    f.pop();
+  }
+
+}
+
+// letra b
+
+void inverte(stack<char> *p){
+
+  stack<char> p1;
+  stack<char> p2;
+
+  while(not p.empty()){
+    p1.push(p.top())
+    p.pop();
+  }
+
+  while(not p1.empty()){
+    p2.push(p1.top())
+    p1.pop();
+  }
+
+  while(not p2.empty()){
+    p.push(p2.top())
+    p2.pop();
+  }
+
+}
+
+// letra c
+
+void inverte(stack<char> *p){
+
+  // contando quando inverter
+  for(int cont = p.size()-1; cont>=0; cont--){
+    stack <char> p1;
+    char aux;
+
+    while(!p.empty()){
+      char topo = p.top();
+      p.pop();
+
+      if(p.empty()) aux = topo;
+      else p1.push(topo);
+    }
+
+    // verificando quando é a posicao para inverter
+    int pos = 0; 
+    while(!p1.empty() || aux != NULL){
+
+      if(pos == cont) {
+        p.push(aux);
+        aux = NULL;
+      } else {
+        p.push(p1.top());
+        p1.pop();
+      }
+
+      pos++;
+    }
+
+  }
+
+}

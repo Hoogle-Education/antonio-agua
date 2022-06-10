@@ -1,0 +1,36 @@
+supondo que p2 seja a fila invertida, para sair a fila normal
+
+funcao enqueueFila2p (Fila2P* fila, char elemento){
+  while( not p2.empty() ){
+    char topo = fila->p2.top();
+    fila->p2.pop();
+    fila->p1.push(topo);
+  } 
+
+  fila->p2.push(elemento);
+
+  while( not fila->p1.empty() ){
+    char topo = fila->p1.top();
+    fila->p1.pop();
+    fila->p2.push();
+  }
+}
+
+funcao dequeueFila2p (Fila2P* fila){
+  fila->p2.pop()
+}
+
+### contando as operações
+  primeiro elemento: 1 + 2*0
+  segundo elemento: 1 + 2*1
+  terceiro elemento: 1 + 2*2
+          ...
+  n-ésimo elemento: 1 + 2*(n-1)
+
+### somando e descobrindo o total
+  (n-1) + 2( 0 + 1 + 2 + 3 + ... (n-2) + (n-1) )
+  (n-1) + 2((n^2 - n)/2)
+  (n-1) + n^2 - n
+
+### extraindo a complexidade
+  pertence O(n^2)

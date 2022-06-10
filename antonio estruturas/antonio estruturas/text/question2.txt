@@ -1,0 +1,23 @@
+funcao empilha_Pilha2F( Pilha2F* pilha, char elemento ){
+
+  while(not pilha->f2.empty()){
+    char frente = pilha->f2.front();
+    pilha->f2.pop();
+    pilha->f1.push(frente);
+  }
+
+  pilha->f2.push(elemento);
+
+  while(not pilha->pilha->f1.empty()){
+    char frente = pilha->f1.front();
+    pilha->f1.pop();
+    pilha->f2.push(frente);
+  }
+
+}
+
+funcao desempilha_Pilha2F(Pilha2F* pilha){
+  pilha->f2.pop();
+}
+
+// pertence O(n^2)

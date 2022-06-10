@@ -1,0 +1,41 @@
+
+// letra a
+
+void inverte(queue<char> *f){
+
+  stack<char> p;
+
+  while(not f.empty()){
+    p.push(f.front())
+    p.pop();
+  }
+  
+  while(not p.empty()){
+    f.push(p.top())
+    p.pop();
+  }
+
+}
+
+// letra b
+
+void inverte(queue<char> *f){
+
+  queue<char> f1;
+  queue<char> f2;
+
+  while(not f.empty()){
+    f1.push(f.front())
+    f1.pop();
+  }
+  
+  while(not f1.empty()){
+    f2.push(f1.front())
+    f1.pop();
+  }
+
+  while(not f2.empty()){
+    f.push(f2.front())
+    f2.pop();
+  }
+}

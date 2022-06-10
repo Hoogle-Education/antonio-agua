@@ -1,0 +1,37 @@
+
+class PilhaMin {
+  public:
+    TAD Pilha;
+    int menorElemento;
+    int obterMinimo();
+    void empilha(int elemento);
+    void desempilha();
+}
+
+int PilhaMin::obterMinimo(){
+  return menorElemento;
+}
+
+void PilhaMin::empilha(int elemento){
+
+  if(elemento < menorElemento){
+    Pilha.empilha( 2*menorElemento - elemento );
+  } else {
+    Pilha.empilha(elemento);
+  }
+
+}
+
+void PilhaMin::desempilha(){
+
+  int topo = Pilha.topo();
+
+  if(topo == menorElemento){
+    menorElemento = 2*menorElemento - topo;
+  } else {
+    Pilha.empilha(elemento);
+  }
+
+  Pilha.desempilha();
+
+}
