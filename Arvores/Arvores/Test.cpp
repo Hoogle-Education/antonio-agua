@@ -24,9 +24,16 @@ int main(void) {
 
 	cout << "Soma: " << arvore->somaFolha() << endl;
 
-	int valor = 5;
+	int valor = 3;
 	cout << "Altura(" << valor << ") = " 
 			 << arvore->altura(valor) << endl;
+
+	cout << "Fator de Balanceamento(" << valor << ") = "
+		<< arvore->fator_balanceamento(valor) << endl;
+
+	arvore->apresentaNiveis();
+
+	cout << "Produto dos nos = " << arvore->produtoNos() << endl;
 
 	return 0;
 }

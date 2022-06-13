@@ -5,11 +5,11 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include <stack>
+#include <queue>
 
 // ----------------------------------------------
 
-using std::stack;
+using std::queue;
 using std::string;
 using std::cout;
 using std::endl;
@@ -35,17 +35,32 @@ public:
 class Arvore {
 private:
 	No* raiz;
+
 	int somaFolha(No* no);
+	int produtoNos(No* no);
+
 	void apresenta_emOrdem(No* no);
 	void apresenta_preOrdem(No* no);
 	void apresenta_posOrdem(No* no);
+
+	No* busca(int valor);
 	int altura(No* no);
+
 public:
 	Arvore() { raiz = NULL; }
+
 	void adiciona(int valor);
+
 	void apresenta_emOrdem();
 	void apresenta_preOrdem();
 	void apresenta_posOrdem();
+
 	int somaFolha();
+	int produtoNos();
+
 	int altura(int valor);
+
+	int fator_balanceamento(int valor);
+
+	void apresentaNiveis();
 };
