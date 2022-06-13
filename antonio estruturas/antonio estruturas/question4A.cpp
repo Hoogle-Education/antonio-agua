@@ -1,32 +1,42 @@
+// -----------------------------------------
+
 #include <iostream>
 #include <stack>
 #include <queue>
 
 using namespace std;
 
-template<typename T>
-void inverte(stack<T>* pilha) {
+// -----------------------------------------
+// O(n), 2n operações feitas, basta trocar
+// e destrocar os elementos
+
+template <typename T>
+void inverte(stack<T> *pilha)
+{
 
 	// apenas tirando os elementos da pilha
-	// eles ja ir�o sair invertidos
-	
+	// eles ja ir�o sair invertidos
+
 	queue<T> fila;
 
 	// passo os elementos para a fila
-	while (not pilha->empty()) {
+	while (not pilha->empty())
+	{
 		fila.push(pilha->top());
 		pilha->pop();
 	}
 
 	// retorno eles invertidos para a pilha
-	while (not fila.empty()) {
+	while (not fila.empty())
+	{
 		pilha->push(fila.front());
 		fila.pop();
 	}
-
 }
 
-//int main() {
+// -----------------------------------------
+
+// int main() {
 //
 //	stack<char> pilha;
 //
@@ -40,4 +50,4 @@ void inverte(stack<T>* pilha) {
 //	cout << pilha.top() << endl;
 //
 //	return 0;
-//}
+// }

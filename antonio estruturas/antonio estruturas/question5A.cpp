@@ -1,13 +1,19 @@
+// -----------------------------------------
+
 #include <iostream>
 #include <queue>
 #include <stack>
 
-using std::queue;
-using std::stack;
 using std::cout;
 using std::endl;
+using std::queue;
+using std::stack;
 
-void inverte(queue<char> *f) {
+// -----------------------------------------
+// O(n) pois apenas troca e destroca os elementos
+
+void inverte(queue<char> *f)
+{
 
   // para inverter
   // jogo todos na pilha e tiro
@@ -16,35 +22,38 @@ void inverte(queue<char> *f) {
   stack<char> *p = new stack<char>();
 
   // coloco na pilha
-  while (not f->empty()) {
+  while (not f->empty())
+  {
     p->push(f->front());
     f->pop();
   }
 
   // retorno para fila
-  while (not p->empty()) {
+  while (not p->empty())
+  {
     f->push(p->top());
     p->pop();
   }
-
 }
 
-//int main(void) {
+// ----------------------------------------
+
+// int main(void) {
 //
-//  queue<char>* fila = new queue<char>();
+//   queue<char>* fila = new queue<char>();
 //
-//  fila->push('a');
-//  fila->push('b');
-//  fila->push('c');
-//  fila->push('d');
-//  fila->push('e');
+//   fila->push('a');
+//   fila->push('b');
+//   fila->push('c');
+//   fila->push('d');
+//   fila->push('e');
 //
-//  inverte(fila);
+//   inverte(fila);
 //
-//  while (not fila->empty()) {
-//    cout << fila->front() << endl;
-//    fila->pop();
-//  }
+//   while (not fila->empty()) {
+//     cout << fila->front() << endl;
+//     fila->pop();
+//   }
 //
-//  return 0;
-//}
+//   return 0;
+// }

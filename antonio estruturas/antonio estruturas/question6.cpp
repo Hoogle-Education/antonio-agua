@@ -1,12 +1,18 @@
+// -----------------------------------------
+
 #include <iostream>
 #include <stack>
 
 using namespace std;
 
-class PilhaMin {
+// -----------------------------------------
+
+class PilhaMin
+{
 private:
-	stack<int>* pilha;
+	stack<int> *pilha;
 	int menorElemento;
+
 public:
 	PilhaMin();
 	~PilhaMin();
@@ -16,73 +22,91 @@ public:
 	int obterMinimo() { return menorElemento; }
 };
 
-PilhaMin::PilhaMin() {
+// -----------------------------------------
+
+PilhaMin::PilhaMin()
+{
 	pilha = new stack<int>();
 }
 
-PilhaMin::~PilhaMin() {
+PilhaMin::~PilhaMin()
+{
 }
 
-void PilhaMin::empilha(int elemento) {
+// -----------------------------------------
+// O(1), apesar de algumas contas a mais serem
+// feitas, no final se torna apenas uma inserÃ§Ã£o
+
+void PilhaMin::empilha(int elemento)
+{
 
 	// se a pilha estiver vazia
-	if (pilha->empty()) menorElemento = elemento;
+	if (pilha->empty())
+		menorElemento = elemento;
 
-	// operador ternário
-	pilha->push((elemento < menorElemento) ?
-					2 * elemento - menorElemento : elemento);
-	// decido se inserir um valor atualizado para 
+	// operador ternï¿½rio
+	pilha->push((elemento < menorElemento) ? 2 * elemento - menorElemento : elemento);
+	// decido se inserir um valor atualizado para
 	// o menor elemento
 
-	menorElemento = (elemento < menorElemento) ? 
-		elemento : menorElemento;
+	menorElemento = (elemento < menorElemento) ? elemento : menorElemento;
 	// atualizo o valor de menor elemento se inseri diferente
-
 }
 
-int PilhaMin::topo() {
+// -----------------------------------------
+// O(1) manipulamos o valor de algumas entradas
+// ainda que precisemos corrigir a resposta se mantÃ©m
+// em O(1)
+
+int PilhaMin::topo()
+{
 
 	int topo = pilha->top();
 
-	if (topo <= menorElemento) {
+	if (topo <= menorElemento)
+	{
 		int menorAnterior = 2 * menorElemento - topo;
 		// descubro o menor elemento anterior
-		// pois o elemento original é dependente do 
+		// pois o elemento original ï¿½ dependente do
 		// menor elemento anterior
 
 		// calculo o menor elemento anterior
 		return (topo + menorAnterior) / 2;
 	}
-	else {
+	else
+	{
 
-		// caso não seja um elemento modificado
+		// caso nï¿½o seja um elemento modificado
 		// apenas retorno o proprio topo
 		return pilha->top();
 	}
-
 }
 
-void PilhaMin::desempilha() {
+// -----------------------------------------
+// O(1) pois apenas retira o elemento e atualiza os
+// valores existentes para conservar a performance
+// na consulta do menor elemento
+
+void PilhaMin::desempilha()
+{
 
 	int topo = pilha->top();
 
 	// se o topo foi um menor elemento modificado
 	// preciso atualizar o valor do menor elemento
 	// para o menor elemento anterior
-	if ( topo <= menorElemento ) 
+	if (topo <= menorElemento)
 		menorElemento = 2 * menorElemento - topo;
-	
-	pilha->pop();
 
+	pilha->pop();
 }
 
-
-//int main(void) {
+// int main(void) {
 //
 //	PilhaMin* pilha = new PilhaMin();
 //
 //	pilha->empilha(5); // 2 5
-//	pilha->empilha(3); // 1 3 
+//	pilha->empilha(3); // 1 3
 //	pilha->empilha(8); // 8
 //	pilha->empilha(4); // 8
 //	pilha->empilha(6); // 8
@@ -100,4 +124,4 @@ void PilhaMin::desempilha() {
 //	cout << pilha->obterMinimo() << endl;
 //
 //	return 0;
-//}
+// }

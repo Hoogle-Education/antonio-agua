@@ -1,74 +1,84 @@
+// -----------------------------------------
+
 #include <iostream>
 #include <stack>
 #include <queue>
 
 using namespace std;
 
-template<typename T>
-void inverte(stack<T>* p) {
+// -----------------------------------------
+// O(n^2) pois nosso numero de operacoes tende
+// para (2n)(n), sendo 2n transferencias para
+// cada um dos n termos
 
+template <typename T>
+void inverte(stack<T> *p)
+{
 
-   stack <char> *p1 = new stack<T>();
+  stack<char> *p1 = new stack<T>();
 
-  // cont sera o contador de quando é o momento
+  // cont sera o contador de quando ï¿½ o momento
   // do auxiliar entrar na pilha original
-  for (int cont = p->size() - 1; cont >= 0; cont--) {
-    
-    // auxiliar guarda o termo que ficará em 
+  for (int cont = p->size() - 1; cont >= 0; cont--)
+  {
+
+    // auxiliar guarda o termo que ficarï¿½ em
     // espera enquanto o resto transita
     char aux;
 
-    // enquanto a pilha não
+    // enquanto a pilha nï¿½o
     // estiver vazia
-    while (not p->empty()) {
+    while (not p->empty())
+    {
       char topo = p->top();
       p->pop();
 
-      if (p->empty()) aux = topo;
-      else p1->push(topo);
+      if (p->empty())
+        aux = topo;
+      else
+        p1->push(topo);
     }
-    // o auxiliar será sempre o ultimo elemento da pilha
-
+    // o auxiliar serï¿½ sempre o ultimo elemento da pilha
 
     // contador da posicao do auxiliar
     int pos = 0;
 
-    // passo todos os elementos até chegar no
+    // passo todos os elementos atï¿½ chegar no
     // valor correto da posicao do auxiliar
-    while (!p1->empty() || aux != NULL) {
-      // faço enquanto tiver conteudo na pilha 1
-      // faço enquanto o auxiliar ainda guardar alguma coisa
+    while (!p1->empty() || aux != NULL)
+    {
+      // faï¿½o enquanto tiver conteudo na pilha 1
+      // faï¿½o enquanto o auxiliar ainda guardar alguma coisa
       // ou -> usado pois a pilha pode nao ter acabado quando
       // colocamos o auxiliar
 
       // se a posicao for o contador
-      if (pos == cont) {
+      if (pos == cont)
+      {
         p->push(aux); // coloco o auxilinar na sua posicao
-        aux = NULL; // esvazio o auxiliar
+        aux = NULL;   // esvazio o auxiliar
       }
-      else {
+      else
+      {
         p->push(p1->top()); // coloco o topo da pilha1
-        p1->pop(); // limpo
+        p1->pop();          // limpo
       }
 
       pos++; // por fim caminho com a posicao do elemento atual
     }
-
   }
-
-
 }
 
-//int main(void) {
+// int main(void) {
 //
-//  stack<char>* p = new stack<char>();
+//   stack<char>* p = new stack<char>();
 //
-//  p->push('a');
-//  p->push('d');
+//   p->push('a');
+//   p->push('d');
 //
-//  inverte(p);
+//   inverte(p);
 //
-//  cout << p->top() << endl;
+//   cout << p->top() << endl;
 //
 //	return 0;
-//}
+// }
